@@ -379,6 +379,32 @@
         animation: spin 4s linear infinite; /* 4秒转一圈，无限循环 */
     }
 
+    /* --- 强制修复视频关闭按钮 --- */
+
+    /* 1. 确保父容器是定位基准 */
+    #video-modal .modal-content {
+        position: relative; /* 这一行很重要，否则按钮会飞到屏幕右上角去 */
+        padding-top: 35px;  /* 顶部多留点空隙给按钮，免得挡住画面 */
+    }
+
+    /* 2. 重新定义视频窗口的关闭按钮样式 */
+    #video-modal .close-btn {
+        position: absolute; /* 绝对定位 */
+        top: 5px;           /* 距离顶部 5px */
+        right: 15px;        /* 距离右边 15px */
+    
+        color: #ffffff;     /* 强制白色！防止看不见 */
+        font-size: 40px;    /* 放大一点，手指好点 */
+        font-weight: bold;
+    
+        z-index: 1000;      /* 层级设高，确保压在视频上面 */
+        cursor: pointer;
+    
+        /* 增加一点阴影，防止背景也是白色的导致看不清 */
+        text-shadow: 0px 0px 5px rgba(0,0,0,0.8); 
+        opacity: 1;         /* 确保完全不透明 */
+    }
+
 </style>
 </head>
 <body>
